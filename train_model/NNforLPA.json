@@ -1,0 +1,109 @@
+{
+	"experiment_name": "invertible_model",
+	"training_dataset_name": "out",
+	"training_data_paths": [
+		"G:\\LCODE\\scan_for_nn\\out.hdf5"
+	],
+	"test_dataset_name": "data",
+	"test_data_paths": [
+		"G:\\LCODE\\scan_for_nn\\out.hdf5"
+	],
+	"predicted_qois": [
+		"energy",
+		"spread",
+		"emittance",
+		"charge"
+	],
+	"dvar_bounds": {
+		"params_Q": [
+			50.0,
+			300.0
+		],
+		"params_em": [
+			2.0,
+			10.0
+		],
+		"params_length": [
+			40,
+			120.0
+		],
+		"params_pos": [
+			5.8,
+			6.7
+		],
+		"params_spread": [
+			0.1,
+			0.5
+		],
+		"Path length": [
+			0.0,
+			10.0
+		]
+		
+	},
+	"qoi_bounds": {
+		"energy": [
+			2529,
+			4405
+		],
+		"spread": [
+			2.5,
+			39
+		],
+		"length": [
+			38,
+			118.45
+		],
+		"radius": [
+			3.6,
+			12.41
+		],
+		"emittance": [
+			3.2,
+			24
+		],
+		"charge": [
+			45,
+			300.0
+		],
+		"fit_obj": [
+			0,
+			4
+		],
+		"Path length": [
+			0.0,
+			3.465
+		]
+	},
+	"model_type": "invertible",
+	"model_parameters": {
+		"validation_model": [
+			"G:\\LCODE\\scan_for_nn\\models",
+			"awa_forward_model"
+		],
+		"num_dvars_to_average_for_validation": 1,
+		"x_dim": 6,
+		"y_dim": 4,
+        "z_dim": 1,
+        "nominal_dim": 12,
+		"coefficient_net_activations": [
+			"relu",
+			"relu",
+			"relu",
+			"linear"
+		],
+		"sampling_distribution": "uniform",
+		"loss_weight_artificial": 1.0,
+		"loss_weight_reconstruction": 3.0,
+		"optimizer": "adam",
+        "learning_rate": 0.005,
+		"epochs":50,
+        "batch_size": 30,
+        "number_of_blocks": 8,
+		"loss_weight_x": 400,
+		"loss_weight_y": 400,
+		"loss_weight_z": 400,
+        "coefficient_net_units": [10,10,10,6]
+	},
+	"save_dir": "D:\\guan\\invertible_networks_for_optimisation_of_pc-master\\data"
+}
