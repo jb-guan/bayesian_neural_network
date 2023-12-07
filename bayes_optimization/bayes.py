@@ -169,19 +169,19 @@ if __name__ == '__main__':
     algo = 'TPE'
 
     if algo == "TPE":
-        algo = optuna.samplers.TPESampler(n_startup_trials = 50, n_ei_candidates = 24)#默认最开始有10个观测值，每一次计算采集函数随机抽取24组参数组合
+        algo = optuna.samplers.TPESampler(n_startup_trials = 50, n_ei_candidates = 24)
     elif algo == "GP":
-        algo = SkoptSampler(skopt_kwargs={'base_estimator':'GP', #选择高斯过程
-                                          'n_initial_points':20, #初始观测点10个
-                                          'acq_func':'EI'} #选择的采集函数为EI，期望增量
+        algo = SkoptSampler(skopt_kwargs={'base_estimator':'GP', 
+                                          'n_initial_points':20, 
+                                          'acq_func':'EI'} 
                            )
 
     study_name = 'bayes_long6'
 
     i = 2
-    study_multi_more = optuna.create_study(sampler = algo, #要使用的具体算法 sampler对样本进行抽样
+    study_multi_more = optuna.create_study(sampler = algo, 
                                 directions=['maximize']
-                                ,study_name=study_name, storage='sqlite:///bayes_long6.db', load_if_exists=True
+                                ,study_name=study_name, storage='sqlite:///awake_run2.db', load_if_exists=True
                                 )
     study_multi_more.optimize(object_trial, n_trials=2000, show_progress_bar=True)
     joblib.dump(study_multi_more, "/mnt/data/bayes_node6/bayes_long{}.pkl".format(i))
